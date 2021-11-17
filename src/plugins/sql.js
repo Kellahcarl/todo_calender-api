@@ -1,0 +1,13 @@
+"use strict";
+
+const dataclient = require( "../data" );
+
+module.exports = {
+	name: "sql",
+	version:"1.0.0",
+	register: async server => {
+		const config = server.app.config.sql;
+		const client = await dataclient( server, config );
+		server.expose( "client",client );
+	}
+};
